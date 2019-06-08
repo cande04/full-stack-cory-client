@@ -1,16 +1,24 @@
 'use strict'
 
-const onIndexSuccess = responseData => {
-  console.log('success', responseData)
-  $('#message').html('')
-  const restaurants = responseData.restaurants
-  restaurants.forEach(restaurant => {
-    $('#message').append(`<p>${restaurant.id}: ${restaurant.name}, ${restaurant.city}</p>`)
-  })
+const indexRestaurantsTemplate = require('../templates/restaurants-index.handlebars')
 
-  $('#message').removeClass()
-  $('#message').addClass('success')
+const indexRestaurantsSuccess = (data) => {
+  console.log(data)
+  const indexRestaurantsHtml = indexRestaurantsTemplate({ restaurants: data.restaurants })
+  $('.content').html(indexRestaurantsHtml)
 }
+
+// const onIndexSuccess = responseData => {
+//   console.log('success', responseData)
+//   $('#message').html('')
+//   const restaurants = responseData.restaurants
+//   restaurants.forEach(restaurant => {
+//     $('#message').append(`<p>${restaurant.id}: ${restaurant.name}, ${restaurant.city}</p>`)
+//   })
+//
+//   $('#message').removeClass()
+//   $('#message').addClass('success')
+// }
 
 const onIndexFailure = responseData => {
   console.log('failure')
@@ -35,7 +43,8 @@ const onShowFailure = responseData => {
 }
 
 module.exports = {
-  onIndexSuccess,
+  // onIndexSuccess,
+  indexRestaurantsSuccess,
   onIndexFailure,
   onShowSuccess,
   onShowFailure

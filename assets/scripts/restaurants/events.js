@@ -8,7 +8,7 @@ const onIndex = (event) => {
   event.preventDefault()
 
   api.index()
-    .then(ui.onIndexSuccess)
+    .then(ui.indexRestaurantsSuccess)
     .catch(ui.onIndexFailure)
 }
 
@@ -23,7 +23,17 @@ const onShow = (event) => {
     .catch(ui.onShowFailure)
 }
 
+const onDelete = (event) => {
+  const id = $(event.target).data('id')
+  api.deleteRestaurant(id)
+    .then(res => {
+      onIndex(event)
+    })
+    .catch(ui.onDeleteFailure)
+}
+
 module.exports = {
   onIndex,
-  onShow
+  onShow,
+  onDelete
 }
