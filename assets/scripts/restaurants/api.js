@@ -13,18 +13,27 @@ const index = () => {
   })
 }
 
-const show = (formData) => {
-  console.log('from show restaurants api')
-
+const show = (restId) => {
   return $.ajax({
-    url: config.apiUrl + '/restaurants/' + formData.restaurant.id,
+    url: config.apiUrl + '/restaurants/' + restId,
     method: 'GET',
-    data: formData,
+    data: restId,
     headers: {
       Authorization: 'Token token=' + store.user.token
     }
   })
 }
+
+// const show = (formData) => {
+//   return $.ajax({
+//     url: config.apiUrl + '/restaurants/' + formData.restaurant.id,
+//     method: 'GET',
+//     data: formData,
+//     headers: {
+//       Authorization: 'Token token=' + store.user.token
+//     }
+//   })
+// }
 
 const deleteRestaurant = (id) => {
   return $.ajax({
@@ -36,8 +45,20 @@ const deleteRestaurant = (id) => {
   })
 }
 
+const create = formData => {
+  return $.ajax({
+    url: config.apiUrl + '/restaurants',
+    method: 'POST',
+    data: formData,
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   index,
   show,
-  deleteRestaurant
+  deleteRestaurant,
+  create
 }

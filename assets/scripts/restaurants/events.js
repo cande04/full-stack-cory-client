@@ -17,11 +17,23 @@ const onShow = (event) => {
 
   const form = event.target
   const formData = getFormFields(form)
+  const restId = formData.restaurant.id
 
-  api.show(formData)
+  api.show(restId)
     .then(ui.onShowSuccess)
     .catch(ui.onShowFailure)
 }
+
+// const onShow = (event) => {
+//   event.preventDefault()
+//
+//   const form = event.target
+//   const formData = getFormFields(form)
+//
+//   api.show(formData)
+//     .then(ui.onShowSuccess)
+//     .catch(ui.onShowFailure)
+// }
 
 const onDelete = (event) => {
   const id = $(event.target).data('id')
@@ -32,8 +44,20 @@ const onDelete = (event) => {
     .catch(ui.onDeleteFailure)
 }
 
+const onCreate = (event) => {
+  event.preventDefault()
+
+  const form = event.target
+  const formData = getFormFields(form)
+
+  api.create(formData)
+    .then(ui.onCreateSuccess)
+    .catch(ui.onCreateFailure)
+}
+
 module.exports = {
   onIndex,
   onShow,
-  onDelete
+  onDelete,
+  onCreate
 }

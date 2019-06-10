@@ -18,6 +18,21 @@
     </p>
 
     <button class='btn btn-danger delete-restaurant' data-id="{{restaurant.id}}">delete</button>
+    <button class='btn btn-outline-info update-restaurant'>Edit Restaurant</button>
+    <button class='btn btn-outline-info create-food'>Add a Dish</button>
   </section>
+
+  {{#if restaurant.foods}}
+  {{#each foods as |food|}}
+  <div class="card" style="width: 18rem;">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Dish: {{food.name}}</li>
+    <li class="list-group-item">Notes: {{food.notes}}</li>
+  </ul>
+  <button class='btn btn-outline-info update-dish'>Edit Dish</button>
+</div>
+{{/each}}
+{{/if}}
+
 
 {{/each}}

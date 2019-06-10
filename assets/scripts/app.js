@@ -17,4 +17,5 @@ $(() => {
   $('#restaurants-index').on('submit', restaurantsEvents.onIndex)
   $('#restaurant-show').on('submit', restaurantsEvents.onShow)
   $('#content').on('click', '.delete-restaurant', restaurantsEvents.onDelete)
+  $('#restaurant-create').on('submit', restaurantsEvents.onCreate)
 })
