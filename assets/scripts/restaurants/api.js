@@ -56,9 +56,59 @@ const create = formData => {
   })
 }
 
+const updateRestaurant = (id, formData) => {
+  console.log(id, formData)
+  return $.ajax({
+    url: config.apiUrl + '/restaurants/' + id,
+    method: 'PATCH',
+    data: formData,
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
+const createFood = (formData) => {
+  console.log(formData)
+  return $.ajax({
+    url: config.apiUrl + `/foods`,
+    method: 'POST',
+    data: formData,
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
+const updateFood = (id, formData) => {
+  console.log(id, formData)
+  return $.ajax({
+    url: config.apiUrl + '/foods/' + id,
+    method: 'PATCH',
+    data: formData,
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
+const deleteFood = (id) => {
+  return $.ajax({
+    url: config.apiUrl + '/foods/' + id,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   index,
   show,
   deleteRestaurant,
-  create
+  create,
+  updateRestaurant,
+  createFood,
+  updateFood,
+  deleteFood
 }

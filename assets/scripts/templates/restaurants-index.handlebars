@@ -1,6 +1,6 @@
 {{#each restaurants as |restaurant|}}
   {{log restaurant}}
-  <section data-id="{{restaurant.id}}">
+  <section data-id="{{restaurant.id}}" data-name="{{restaurant.name}}" data-city="{{restaurant.city}}">
     <h6>Name:</h6>
     <h3>
       {{restaurant.name}}
@@ -18,21 +18,46 @@
     </p>
 
     <button class='btn btn-danger delete-restaurant' data-id="{{restaurant.id}}">delete</button>
-    <button class='btn btn-outline-info update-restaurant'>Edit Restaurant</button>
+    <button class="btn btn-outline-info update-restaurant">Edit Restaurant</button>
+
+    <form class="update-restaurant-form hidden" id="restaurant-{{restaurant.id}}">
+        <input class="restaurant-rename" required type="text" name="restaurant[name]" placeholder="new restaurant name"/>
+        <input class="city-rename" required type="text" name="restaurant[city]" placeholder="new restaurant city"/>
+        <input type="submit" value="edit" class="btn btn-sm btn-outline-secondary margin-top-5 bare-button">
+    </form>
+
+
     <button class='btn btn-outline-info create-food'>Add a Dish</button>
-  </section>
+
+    <form class="create-food-form hidden">
+        <input class="food-name" type="text" name="food[name]" placeholder="new dish"/>
+        <input class="notes" type="text" name="food[notes]" placeholder="what'd you think?"/>
+        <input class="rest-id" type="integer" name="food[restaurant_id]" value="{{restaurant.id}}"/>
+        <input type="submit" value="create" class="btn btn-sm btn-outline-secondary margin-top-5 bare-button">
+    </form>
+
+
 
   {{#if restaurant.foods}}
   {{#each foods as |food|}}
-  <div class="card" style="width: 18rem;">
+  <div class="card" data-food-id="{{food.id}}" data-food-name="{{food.name}}" data-food-notes="{{food.notes}}" style="width: 18rem;">
   <ul class="list-group list-group-flush">
     <li class="list-group-item">Dish: {{food.name}}</li>
     <li class="list-group-item">Notes: {{food.notes}}</li>
   </ul>
   <button class='btn btn-outline-info update-dish'>Edit Dish</button>
+
+  <form class="update-dish-form hidden" id="food-{{food.id}}">
+      <input class="food-rename" required type="text" name="food[name]" placeholder="new food name"/>
+      <input class="notes-edit" required type="text" name="food[notes]" placeholder="new food notes"/>
+      <input class="rest-id" type="integer" name="food[restaurant_id]" value="{{restaurant.id}}"/>
+      <input type="submit" value="edit" class="btn btn-sm btn-outline-secondary margin-top-5 bare-button">
+  </form>
+  <button class='btn btn-danger delete-food' data-id="{{food.id}}">delete</button>
+
 </div>
 {{/each}}
 {{/if}}
 
-
+</section>
 {{/each}}

@@ -2,6 +2,7 @@
 
 const indexRestaurantsTemplate = require('../templates/restaurants-index.handlebars')
 const showRestaurantTemplate = require('../templates/restaurant-show.handlebars')
+const store = require('../store')
 
 const indexRestaurantsSuccess = (data) => {
   console.log(data)
@@ -77,7 +78,56 @@ const onCreateFailure = responseData => {
   $('#message').addClass('failure')
 }
 
+const onUpdateSuccess = responseData => {
+  console.log('success', responseData)
+}
 
+const fillUpdateForm = event => {
+  // const restId = $(event.target).closest('section').data('id')
+  // $(`[data-id=${store.restaurantId}] > .update-restaurant-form`).toggle()
+
+  // $('.update-restaurant-form').toggleClass('hidden')
+  $('.restaurant-rename').val(store.restaurantName)
+  $('.city-rename').val(store.restaurantCity)
+}
+
+const onCreateFoodSuccess = responseData => {
+  console.log('success', responseData)
+}
+
+const onCreateFoodFailure = responseData => {
+  console.log('failure')
+  $('#message').text('Failed to create')
+  $('#message').removeClass('success')
+  $('#message').addClass('failure')
+}
+
+const fillUpdateFood = event => {
+  // const restId = $(event.target).closest('section').data('id')
+  // $(`[data-id=${store.restaurantId}] > .update-restaurant-form`).toggle()
+
+  // $('.update-restaurant-form').toggleClass('hidden')
+  $('.food-rename').val(store.foodName)
+  $('.notes-edit').val(store.foodNotes)
+}
+
+const onUpdateFoodSuccess = responseData => {
+  console.log('success', responseData)
+}
+
+const onUpdateFoodFailure = responseData => {
+  console.log('failure')
+  $('#message').text('Failed to create')
+  $('#message').removeClass('success')
+  $('#message').addClass('failure')
+}
+
+const onDeleteFoodFailure = responseData => {
+  console.log('failure')
+  $('#message').text('Failed to delete')
+  $('#message').removeClass()
+  $('#message').addClass('failure')
+}
 
 module.exports = {
   // onIndexSuccess,
@@ -87,5 +137,13 @@ module.exports = {
   onShowFailure,
   onDeleteFailure,
   onCreateSuccess,
-  onCreateFailure
+  onCreateFailure,
+  onUpdateSuccess,
+  fillUpdateForm,
+  onCreateFoodSuccess,
+  onCreateFoodFailure,
+  onUpdateFoodSuccess,
+  onUpdateFoodFailure,
+  fillUpdateFood,
+  onDeleteFoodFailure
 }
