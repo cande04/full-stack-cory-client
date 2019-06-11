@@ -36,8 +36,17 @@ const onShow = (event) => {
 //     .catch(ui.onShowFailure)
 // }
 
-const onDelete = (event) => {
+const onClickDelete = event => {
   const id = $(event.target).data('id')
+  $('.delete-modal').toggle()
+  store.deleteId = id
+  console.log(store.deleteId)
+}
+
+const onDelete = (event) => {
+  console.log(store.deleteId)
+  const id = store.deleteId
+  $('.delete-modal').toggle()
   api.deleteRestaurant(id)
     .then(res => {
       onIndex(event)
@@ -142,8 +151,18 @@ const onUpdateFood = event => {
     .catch(ui.onUpdateFoodFailure)
 }
 
+const onClickDeleteFood = event => {
+  const id = $(event.target).closest('div').data('food-id')
+  $('.deleteFood-modal').toggle()
+  store.deleteFoodId = id
+  console.log(store.deleteFoodId)
+}
+
 const onDeleteFood = event => {
-  const id = $(event.target).data('id')
+  console.log('ive been clicked')
+  const id = store.deleteFoodId
+  console.log(id)
+  $('.deleteFood-modal').toggle()
   api.deleteFood(id)
     .then(res => {
       onIndex(event)
@@ -162,6 +181,8 @@ module.exports = {
   onCreateFood,
   onClickUpdateFood,
   onUpdateFood,
-  onDeleteFood
+  onDeleteFood,
+  onClickDelete,
+  onClickDeleteFood
   // showForms
 }

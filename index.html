@@ -58,14 +58,52 @@
     <form id='restaurant-create'>
       <input type="text" name="restaurant[name]" placeholder="Where did you eat?">
       <input type="text" name="restaurant[city]" placeholder="What city?">
-      <input type="text" name="food[name]" placeholder="What did you order?">
-      <input type="text" name="food[notes]" placeholder="Any notes?">
       <input type="submit" value="Add a Restaurant">
     </form>
 
     <main>
       <div id="content" class="content"></div>
     </main>
+
+    <div class="modal in delete-modal" style="display: hidden;">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Are you sure?</h4>
+          </div>
+          <div class="modal-body">
+            <p>Are you sure you want to delete?</p>
+            <div class="row">
+                <div class="col-12-xs text-center">
+                    <button class="btn btn-success btn-md yes-delete">Yes</button>
+                    <button class="btn btn-danger btn-md no-delete">No</button>
+                </div>
+            </div>
+          </div>
+
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <div class="modal in deleteFood-modal" style="display: hidden;">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Are you sure?</h4>
+          </div>
+          <div class="modal-body">
+            <p>Are you sure you want to delete this dish?</p>
+            <div class="row">
+                <div class="col-12-xs text-center">
+                    <button class="btn btn-success btn-md yesDelete-food">Yes</button>
+                    <button class="btn btn-danger btn-md noDelete-food">No</button>
+                </div>
+            </div>
+          </div>
+
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 
     </body>
 </html>

@@ -4,7 +4,7 @@
 // const example = require('./example')
 const authEvents = require('./auth/events')
 const restaurantsEvents = require('./restaurants/events')
-const foodsEvents = require('./foods/events')
+// const foodsEvents = require('./foods/events')
 
 // use require without a reference to ensure a file is bundled
 // require('./example')
@@ -17,7 +17,7 @@ $(() => {
 
   $('#restaurants-index').on('submit', restaurantsEvents.onIndex)
   $('#restaurant-show').on('submit', restaurantsEvents.onShow)
-  $('#content').on('click', '.delete-restaurant', restaurantsEvents.onDelete)
+  $('#content').on('click', '.delete-restaurant', restaurantsEvents.onClickDelete)
   $('#restaurant-create').on('submit', restaurantsEvents.onCreate)
   // $('.update-restaurant').click(function () {
   //   $('.update-restaurant-form').toggle()
@@ -28,5 +28,7 @@ $(() => {
   $('#content').on('submit', '.create-food-form', restaurantsEvents.onCreateFood)
   $('#content').on('submit', '.update-dish-form', restaurantsEvents.onUpdateFood)
   $('#content').on('click', '.update-dish', restaurantsEvents.onClickUpdateFood)
-  $('#content').on('click', '.delete-food', restaurantsEvents.onDeleteFood)
+  $('#content').on('click', '.delete-food', restaurantsEvents.onClickDeleteFood)
+  $('.deleteFood-modal').on('click', '.yesDelete-food', restaurantsEvents.onDeleteFood)
+  $('.delete-modal').on('click', '.yes-delete', restaurantsEvents.onDelete)
 })

@@ -64,11 +64,10 @@ const onDeleteFailure = responseData => {
 
 const onCreateSuccess = responseData => {
   console.log('success', responseData)
-  const restaurant = responseData.restaurant.name
-  const city = responseData.restaurant.city
-  const food = responseData.food.name
-  const notes = responseData.food.notes
-  $('#content').text('Added: ' + restaurant + ' in: ' + city + ' where you ate: ' + food + ' and said: ' + notes)
+  // const restaurant = responseData.restaurant.name
+  // const city = responseData.restaurant.city
+  // $('#content').text('Added: ' + restaurant + ' in: ' + city)
+  $('.content').html(showRestaurantTemplate({restaurant: responseData.restaurant}))
 }
 
 const onCreateFailure = responseData => {
