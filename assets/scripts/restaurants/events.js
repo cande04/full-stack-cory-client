@@ -54,6 +54,14 @@ const onDelete = (event) => {
     .catch(ui.onDeleteFailure)
 }
 
+const hideFoodModal = event => {
+  $('.deleteFood-modal').toggle()
+}
+
+const hideRestaurantModal = event => {
+  $('.delete-modal').toggle()
+}
+
 const onCreate = (event) => {
   event.preventDefault()
 
@@ -65,12 +73,27 @@ const onCreate = (event) => {
     .catch(ui.onCreateFailure)
 }
 
+
 const onClickUpdate = event => {
   event.preventDefault()
 
+  $('.card').each(function () {
+    if (!$('.card').hasClass('hidden')) {
+      $('.card').addClass('hidden')
+    }
+  })
+
   const id = $(event.target).closest('section').data('id')
   store.restaurantId = id
-  $(`#restaurant-${id}`).toggle()
+
+  $(`#restaurant-${id}`).toggleClass('hidden')
+
+  $(document).mouseup(function (e) {
+    const container = $(`#restaurant-${id}`)
+    if (!container.is(e.target) && container.has(e.target).length === 0) {
+      container.addClass('hidden')
+    }
+  })
   console.log(store.restaurantId)
   const name = $(event.target).closest('section').data('name')
   store.restaurantName = name
@@ -102,7 +125,19 @@ const onUpdate = (event) => {
 
 const onClickAddDish = (event) => {
   event.preventDefault()
-  $('.create-food-form').toggle()
+  // $('.create-food-form').toggle()
+  const id = $(event.target).closest('section').data('id')
+  // store.restaurantId = id
+  $(`#restaurantfood-${id}`).toggleClass('hidden')
+
+  $(document).mouseup(function (e) {
+    const container = $(`#restaurantfood-${id}`)
+    if (!container.is(e.target) && container.has(e.target).length === 0) {
+      container.addClass('hidden')
+    }
+  })
+
+  $('.document').toggle()
 }
 
 const onCreateFood = (event) => {
@@ -127,7 +162,15 @@ const onClickUpdateFood = event => {
   const foodId = $(event.target).closest('div').data('food-id')
   store.foodId = foodId
   console.log(store.foodId)
-  $(`#food-${foodId}`).toggle()
+  $(`#food-${foodId}`).toggleClass('hidden')
+
+  $(document).mouseup(function (e) {
+    const container = $(`#food-${foodId}`)
+    if (!container.is(e.target) && container.has(e.target).length === 0) {
+      container.addClass('hidden')
+    }
+  })
+
   const name = $(event.target).closest('div').data('food-name')
   store.foodName = name
   console.log(store.foodName)
@@ -170,6 +213,7 @@ const onDeleteFood = event => {
     .catch(ui.onDeleteFoodFailure)
 }
 
+
 module.exports = {
   onIndex,
   onShow,
@@ -183,6 +227,8 @@ module.exports = {
   onUpdateFood,
   onDeleteFood,
   onClickDelete,
-  onClickDeleteFood
+  onClickDeleteFood,
+  hideFoodModal,
+  hideRestaurantModal
   // showForms
 }

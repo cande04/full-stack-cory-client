@@ -1,4 +1,5 @@
 @import '~bootstrap/scss/bootstrap';
+@import 'theme';
 
 //
 // .update-restaurant-form {
@@ -13,12 +14,9 @@
   display: inline;
 }
 
-
-.navbar {
-  background-color: black;
-  display: flex;
-  justify-content: right;
-  align-items: right;
+.card {
+  justify-content: center;
+  margin: auto;
 }
 
 // .navbar-toggler {

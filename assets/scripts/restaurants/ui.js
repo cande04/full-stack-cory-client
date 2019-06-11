@@ -16,6 +16,7 @@ const onShowSuccess = (responseData) => {
   // if (restaurantId =
 
   $('.content').html(showRestaurantTemplate({restaurant: responseData.restaurant}))
+  $('form').trigger('reset')
   // if (restaurantId === indexRestaurantsTemplate({restaurants: responseData.restaurant.data('id')})) {
   //   $('content').html(restaurant)
   // }
@@ -53,6 +54,7 @@ const onShowFailure = responseData => {
   $('#message').text('Failed to get :(')
   $('#message').removeClass()
   $('#message').addClass('failure')
+  $('form').trigger('reset')
 }
 
 const onDeleteFailure = responseData => {
@@ -68,6 +70,7 @@ const onCreateSuccess = responseData => {
   // const city = responseData.restaurant.city
   // $('#content').text('Added: ' + restaurant + ' in: ' + city)
   $('.content').html(showRestaurantTemplate({restaurant: responseData.restaurant}))
+  $('form').trigger('reset')
 }
 
 const onCreateFailure = responseData => {
@@ -75,6 +78,7 @@ const onCreateFailure = responseData => {
   $('#message').text('Failed to create')
   $('#message').removeClass('success')
   $('#message').addClass('failure')
+  $('form').trigger('reset')
 }
 
 const onUpdateSuccess = responseData => {
@@ -108,6 +112,7 @@ const fillUpdateFood = event => {
   // $('.update-restaurant-form').toggleClass('hidden')
   $('.food-rename').val(store.foodName)
   $('.notes-edit').val(store.foodNotes)
+  $('.rest-id').val(store.restaurantId)
 }
 
 const onUpdateFoodSuccess = responseData => {

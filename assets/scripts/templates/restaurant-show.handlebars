@@ -19,25 +19,7 @@
 
   <button class='btn btn-danger delete-restaurant' data-id="{{restaurant.id}}">delete</button>
 
-  <div class="modal in delete-modal" style="display: hidden;">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">Are you sure?</h4>
-        </div>
-        <div class="modal-body">
-          <p>Are you sure you want to delete this restaurant?</p>
-          <div class="row">
-              <div class="col-12-xs text-center">
-                  <button class="btn btn-success btn-md yes-delete" data-delete-id="{{restaurant.id}}">Yes</button>
-                  <button class="btn btn-danger btn-md no-delete">No</button>
-              </div>
-          </div>
-        </div>
 
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
 
   <button class='btn btn-outline-info update-restaurant'>Edit Restaurant</button>
   <form class="update-restaurant-form hidden" id="restaurant-{{restaurant.id}}">
@@ -46,7 +28,7 @@
       <input type="submit" value="edit" class="btn btn-sm btn-outline-secondary margin-top-5 bare-button">
   </form>
   <button class='btn btn-outline-info create-food'>Add a Dish</button>
-  <form class="create-food-form hidden">
+  <form class="create-food-form hidden" id="restaurantfood-{{restaurant.id}}">
       <input class="food-name" type="text" name="food[name]" placeholder="new dish"/>
       <input class="notes" type="text" name="food[notes]" placeholder="what'd you think?"/>
       <input class="rest-id" type="integer" name="food[restaurant_id]" value="{{restaurant.id}}" readonly/>
@@ -63,12 +45,14 @@
   <li class="list-group-item">Notes: {{food.notes}}</li>
 </ul>
 <button class='btn btn-outline-info update-dish'>Edit Dish</button>
-<form class="update-dish-form hidden" id="food-{{food.id}}">
+
+<form class="update-dish-form card hidden" id="food-{{food.id}}">
     <input class="food-rename" required type="text" name="food[name]" placeholder="new food name"/>
     <input class="notes-edit" required type="text" name="food[notes]" placeholder="new food notes"/>
-    <input class="rest-id" type="integer" name="food[restaurant_id]" value="{{restaurant.id}}" readonly/>
+    <input class="rest-id" type="integer" name="food[restaurant_id]" placeholder="restaurant id" readonly/>
     <input type="submit" value="edit" class="btn btn-sm btn-outline-secondary margin-top-5 bare-button">
 </form>
+
 <button class='btn btn-danger delete-food' data-id="{{food.id}}">delete</button>
 </div>
 {{/each}}

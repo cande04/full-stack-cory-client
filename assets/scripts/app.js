@@ -31,4 +31,6 @@ $(() => {
   $('#content').on('click', '.delete-food', restaurantsEvents.onClickDeleteFood)
   $('.deleteFood-modal').on('click', '.yesDelete-food', restaurantsEvents.onDeleteFood)
   $('.delete-modal').on('click', '.yes-delete', restaurantsEvents.onDelete)
+  $('.deleteFood-modal').on('click', '.close', restaurantsEvents.hideFoodModal)
+  $('.delete-modal').on('click', '.close', restaurantsEvents.hideRestaurantModal)
 })

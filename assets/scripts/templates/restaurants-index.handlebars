@@ -19,7 +19,7 @@
 
     <button class='btn btn-danger delete-restaurant' data-id="{{restaurant.id}}">delete</button>
 
-    <div class="modal in delete-modal" style="display: hidden;">
+    <!-- <div class="modal in delete-modal" style="display: hidden;">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -30,18 +30,18 @@
             <div class="row">
                 <div class="col-12-xs text-center">
                     <button class="btn btn-success btn-md yes-delete" data-delete-id="{{restaurant.id}}">Yes</button>
-                    <button class="btn btn-danger btn-md no-delete">No</button>
+                    <button class="btn btn-success btn-md noDelete-food">No</button>
                 </div>
             </div>
-          </div>
+          </div> -->
 
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
+        <!-- </div>
+      </div>
+    </div> -->
 
     <button class="btn btn-outline-info update-restaurant">Edit Restaurant</button>
 
-    <form class="update-restaurant-form hidden" id="restaurant-{{restaurant.id}}">
+    <form class="update-restaurant-form card hidden" id="restaurant-{{restaurant.id}}">
         <input class="restaurant-rename" required type="text" name="restaurant[name]" placeholder="new restaurant name"/>
         <input class="city-rename" required type="text" name="restaurant[city]" placeholder="new restaurant city"/>
         <input type="submit" value="edit" class="btn btn-sm btn-outline-secondary margin-top-5 bare-button">
@@ -50,7 +50,7 @@
 
     <button class='btn btn-outline-info create-food'>Add a Dish</button>
 
-    <form class="create-food-form hidden">
+    <form class="create-food-form card hidden" id="restaurantfood-{{restaurant.id}}">
         <input class="food-name" type="text" name="food[name]" placeholder="new dish"/>
         <input class="notes" type="text" name="food[notes]" placeholder="what'd you think?"/>
         <input class="rest-id" type="integer" name="food[restaurant_id]" value="{{restaurant.id}}" readonly/>
@@ -68,7 +68,7 @@
   </ul>
   <button class='btn btn-outline-info update-dish'>Edit Dish</button>
 
-  <form class="update-dish-form hidden" id="food-{{food.id}}">
+  <form class="update-dish-form card hidden" id="food-{{food.id}}">
       <input class="food-rename" required type="text" name="food[name]" placeholder="new food name"/>
       <input class="notes-edit" required type="text" name="food[notes]" placeholder="new food notes"/>
       <input class="rest-id" type="integer" name="food[restaurant_id]" value="{{restaurant.id}}" readonly/>
@@ -76,7 +76,7 @@
   </form>
   <button class='btn btn-danger delete-food'>delete</button>
 
-  <div class="modal in deleteFood-modal" style="display: hidden;">
+  <!-- <div class="modal in deleteFood-modal" style="display: hidden;">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -87,14 +87,14 @@
           <div class="row">
               <div class="col-12-xs text-center">
                   <button class="btn btn-success btn-md yesDelete-food">Yes</button>
-                  <button class="btn btn-danger btn-md noDelete-food">No</button>
+                  <button class="btn btn-success btn-md noDelete-food">No</button>
               </div>
           </div>
-        </div>
+        </div> -->
 
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
+      <!-- </div>
+    </div>
+  </div> -->
 
 </div>
 {{/each}}

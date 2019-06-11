@@ -29,7 +29,7 @@ const onSignInSuccess = responseData => {
   $('.jumbotron').addClass('hidden')
   $('#SignInWindow').modal('hide')
   $('#sign-in-message').text('')
-  $('.navbar-toggler').removeClass('hidden')
+  $('.navbar').removeClass('hidden')
 }
 
 const onSignInFailure = responseData => {
@@ -62,7 +62,8 @@ const onSignOutSuccess = () => {
   $('.jumbotron').removeClass('hidden')
   $('.signup-button').show()
   $('.navbar').addClass('hidden')
-  $('.navbar-toggler').addClass('hidden')
+  $('.navbar').addClass('hidden')
+  $('.content').empty()
 }
 
 const onSignOutFailure = () => {
