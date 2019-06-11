@@ -10,8 +10,8 @@ const restaurantsEvents = require('./restaurants/events')
 // require('./example')
 
 $(() => {
-  $('#sign-up').on('submit', authEvents.onSignUp)
-  $('#sign-in').on('submit', authEvents.onSignIn)
+  $('#signup').on('submit', authEvents.onSignUp)
+  $('#signin').on('submit', authEvents.onSignIn)
   $('#update-password').on('submit', authEvents.onUpdatePassword)
   $('#sign-out').on('submit', authEvents.onSignOut)
 

@@ -7,6 +7,9 @@ const onSignUpSuccess = responseData => {
   $('#message').removeClass('failure')
   $('#message').addClass('success')
   $('form').trigger('reset')
+  $('#SignUpWindow').modal('hide')
+  $('#sign-in-message').text('Thanks for signing up, now sign in!')
+  $('.signup-button').hide()
 }
 
 const onSignUpFailure = responseData => {
@@ -22,6 +25,11 @@ const onSignInSuccess = responseData => {
   $('#message').addClass('success')
   $('form').trigger('reset')
   store.user = responseData.user
+  $('.showBody').removeClass('hidden')
+  $('.jumbotron').addClass('hidden')
+  $('#SignInWindow').modal('hide')
+  $('#sign-in-message').text('')
+  $('.navbar-toggler').removeClass('hidden')
 }
 
 const onSignInFailure = responseData => {
@@ -50,6 +58,11 @@ const onSignOutSuccess = () => {
   $('#message').removeClass()
   $('#message').addClass('success')
   $('form').trigger('reset')
+  $('.showBody').addClass('hidden')
+  $('.jumbotron').removeClass('hidden')
+  $('.signup-button').show()
+  $('.navbar').addClass('hidden')
+  $('.navbar-toggler').addClass('hidden')
 }
 
 const onSignOutFailure = () => {
