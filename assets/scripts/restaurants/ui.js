@@ -7,7 +7,10 @@ const store = require('../store')
 const indexRestaurantsSuccess = (data) => {
   console.log(data)
   const indexRestaurantsHtml = indexRestaurantsTemplate({ restaurants: data.restaurants })
-  $('.content').html(indexRestaurantsHtml)
+  $('#content').html(indexRestaurantsHtml)
+  $('html,body').animate({
+    scrollTop: $('#content').offset().top},
+  'slow')
 }
 
 const onShowSuccess = (responseData) => {
@@ -15,8 +18,11 @@ const onShowSuccess = (responseData) => {
   // const restaurantId = responseData.restaurant.id
   // if (restaurantId =
 
-  $('.content').html(showRestaurantTemplate({restaurant: responseData.restaurant}))
+  $('#content').html(showRestaurantTemplate({restaurant: responseData.restaurant}))
   $('form').trigger('reset')
+  $('html,body').animate({
+    scrollTop: $('#content').offset().top},
+  'slow')
   // if (restaurantId === indexRestaurantsTemplate({restaurants: responseData.restaurant.data('id')})) {
   //   $('content').html(restaurant)
   // }
@@ -69,7 +75,7 @@ const onCreateSuccess = responseData => {
   // const restaurant = responseData.restaurant.name
   // const city = responseData.restaurant.city
   // $('#content').text('Added: ' + restaurant + ' in: ' + city)
-  $('.content').html(showRestaurantTemplate({restaurant: responseData.restaurant}))
+  $('#content').html(showRestaurantTemplate({restaurant: responseData.restaurant}))
   $('form').trigger('reset')
 }
 
@@ -96,6 +102,7 @@ const fillUpdateForm = event => {
 
 const onCreateFoodSuccess = responseData => {
   console.log('success', responseData)
+  $('.collapse').toggle()
 }
 
 const onCreateFoodFailure = responseData => {

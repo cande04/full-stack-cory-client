@@ -6,6 +6,20 @@
 //   display: none;
 // }
 
+header {
+  background-image: url('../public/images/background.jpg');
+  height: 100vh;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.title {
+  color: black;
+  margin: 0;
+  padding: 50vh 3rem;
+  text-align: right;
+}
+
 .hidden {
   display: none;
 }
@@ -18,6 +32,28 @@
   justify-content: center;
   margin: auto;
 }
+
+.jumbotron {
+  height: 100vh;
+}
+
+.jumbtron-messaging {
+  padding: 30vh 3rem;
+}
+
+#signin-success {
+  color: white;
+}
+
+.restauarant-name {
+  font-family: sans-serif;
+}
+
+// .restaurant-navbar {
+//   bottom: 0;
+//   position: fixed;
+//   overflow: hidden;
+// }
 
 // .navbar-toggler {
 //   display: flex;

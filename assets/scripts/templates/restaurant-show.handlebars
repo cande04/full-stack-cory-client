@@ -1,8 +1,10 @@
 
 {{log restaurant}}
 <section data-id="{{restaurant.id}}" data-name="{{restaurant.name}}" data-city="{{restaurant.city}}">
-  <h6>Name:</h6>
-  <h3>
+  <button class='btn btn-outline-dark update-restaurant'>Edit Restaurant</button>
+  <button class='btn btn-outline-dark delete-restaurant' data-id="{{restaurant.id}}">delete</button>
+
+  <h3 class="restauarant-name">
     {{restaurant.name}}
   </h3>
   <h6>City:</h6>
@@ -17,11 +19,11 @@
     {{restaurant.id}}
   </p>
 
-  <button class='btn btn-danger delete-restaurant' data-id="{{restaurant.id}}">delete</button>
 
 
 
-  <button class='btn btn-outline-info update-restaurant'>Edit Restaurant</button>
+
+
   <form class="update-restaurant-form hidden" id="restaurant-{{restaurant.id}}">
       <input class="restaurant-rename" required type="text" name="restaurant[name]" placeholder="new restaurant name"/>
       <input class="city-rename" required type="text" name="restaurant[city]" placeholder="new restaurant city"/>

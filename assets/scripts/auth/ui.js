@@ -20,9 +20,7 @@ const onSignUpFailure = responseData => {
 }
 
 const onSignInSuccess = responseData => {
-  $('#message').text('Signed in successfully!')
-  $('#message').removeClass('failure')
-  $('#message').addClass('success')
+  $('#signin-success').text('Welcome! Let\'s get to eating!')
   $('form').trigger('reset')
   store.user = responseData.user
   $('.showBody').removeClass('hidden')
@@ -30,10 +28,11 @@ const onSignInSuccess = responseData => {
   $('#SignInWindow').modal('hide')
   $('#sign-in-message').text('')
   $('.navbar').removeClass('hidden')
+  setTimeout(() => $('#signin-success').text(''), 5000)
 }
 
 const onSignInFailure = responseData => {
-  $('#message').text('Sign in failed :(')
+  $('#message').text('Sign in failed')
   $('#message').removeClass('success')
   $('#message').addClass('failure')
   $('form').trigger('reset')
