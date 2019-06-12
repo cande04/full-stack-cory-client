@@ -7,9 +7,13 @@ const store = require('../store')
 const indexRestaurantsSuccess = (data) => {
   console.log(data)
   const indexRestaurantsHtml = indexRestaurantsTemplate({ restaurants: data.restaurants })
-  $('#content').html(indexRestaurantsHtml)
+  if (data.restaurants.length === 0) {
+    $('#content').html('<h4>No restaurants yet, go eat!<h4>')
+  } else {
+    $('#content').html(indexRestaurantsHtml)
+  }
   $('html,body').animate({
-    scrollTop: $('#content').offset().top},
+    scrollTop: $('main').offset().top},
   'slow')
 }
 
@@ -21,7 +25,7 @@ const onShowSuccess = (responseData) => {
   $('#content').html(showRestaurantTemplate({restaurant: responseData.restaurant}))
   $('form').trigger('reset')
   $('html,body').animate({
-    scrollTop: $('#content').offset().top},
+    scrollTop: $('.message').offset().top},
   'slow')
   // if (restaurantId === indexRestaurantsTemplate({restaurants: responseData.restaurant.data('id')})) {
   //   $('content').html(restaurant)
@@ -42,9 +46,10 @@ const onShowSuccess = (responseData) => {
 
 const onIndexFailure = responseData => {
   console.log('failure')
-  $('#message').text('Failed to load restaurants')
-  $('#message').removeClass()
-  $('#message').addClass('failure')
+  $('#content').text('failed to load restaurants')
+  $('html,body').animate({
+    scrollTop: $('.message').offset().top},
+  'slow')
 }
 
 // const onShowSuccess = responseData => {
@@ -57,17 +62,16 @@ const onIndexFailure = responseData => {
 
 const onShowFailure = responseData => {
   console.log('failure')
-  $('#message').text('Failed to get :(')
-  $('#message').removeClass()
-  $('#message').addClass('failure')
+  $('#content').text('restaurant doesn\'t exist - better go try it!')
   $('form').trigger('reset')
+  $('html,body').animate({
+    scrollTop: $('.message').offset().top},
+  'slow')
 }
 
 const onDeleteFailure = responseData => {
   console.log('failure')
-  $('#message').text('Failed to delete')
-  $('#message').removeClass()
-  $('#message').addClass('failure')
+  $('#message').text('failed to delete')
 }
 
 const onCreateSuccess = responseData => {
@@ -77,13 +81,14 @@ const onCreateSuccess = responseData => {
   // $('#content').text('Added: ' + restaurant + ' in: ' + city)
   $('#content').html(showRestaurantTemplate({restaurant: responseData.restaurant}))
   $('form').trigger('reset')
+  $('html,body').animate({
+    scrollTop: $('.message').offset().top},
+  'slow')
 }
 
 const onCreateFailure = responseData => {
   console.log('failure')
-  $('#message').text('Failed to create')
-  $('#message').removeClass('success')
-  $('#message').addClass('failure')
+  $('#content').text('failed to create')
   $('form').trigger('reset')
 }
 
@@ -108,8 +113,7 @@ const onCreateFoodSuccess = responseData => {
 const onCreateFoodFailure = responseData => {
   console.log('failure')
   $('#message').text('Failed to create')
-  $('#message').removeClass('success')
-  $('#message').addClass('failure')
+  setTimeout(() => $('#message').text(''), 4000)
 }
 
 const fillUpdateFood = event => {
@@ -124,20 +128,20 @@ const fillUpdateFood = event => {
 
 const onUpdateFoodSuccess = responseData => {
   console.log('success', responseData)
+  $('#message').text('updated successfully!')
+  setTimeout(() => $('#message').text(''), 4000)
 }
 
 const onUpdateFoodFailure = responseData => {
   console.log('failure')
-  $('#message').text('Failed to create')
-  $('#message').removeClass('success')
-  $('#message').addClass('failure')
+  $('#message').text('failed to update')
+  setTimeout(() => $('#message').text(''), 4000)
 }
 
 const onDeleteFoodFailure = responseData => {
   console.log('failure')
-  $('#message').text('Failed to delete')
-  $('#message').removeClass()
-  $('#message').addClass('failure')
+  $('#message').text('failed to delete')
+  setTimeout(() => $('#message').text(''), 4000)
 }
 
 module.exports = {

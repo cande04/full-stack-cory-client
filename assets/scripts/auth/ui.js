@@ -3,24 +3,21 @@
 const store = require('../store')
 
 const onSignUpSuccess = responseData => {
-  $('#message').text('Signed up successfully!')
-  $('#message').removeClass('failure')
-  $('#message').addClass('success')
   $('form').trigger('reset')
   $('#SignUpWindow').modal('hide')
-  $('#sign-in-message').text('Thanks for signing up, now sign in!')
+  $('#sign-in-message').text('thanks for signing up, now sign in!')
   $('.signup-button').hide()
+  setTimeout(() => $('#sign-in-message').text(''), 5000)
 }
 
 const onSignUpFailure = responseData => {
-  $('#message').text('Sign up failed')
-  $('#message').removeClass('success')
-  $('#message').addClass('failure')
+  $('#nosignup').text('sign up failed')
   $('form').trigger('reset')
+  setTimeout(() => $('#nosignup').text(''), 5000)
 }
 
 const onSignInSuccess = responseData => {
-  $('#signin-success').text('Welcome! Let\'s get to eating!')
+  $('#signin-success').text('welcome! let\'s get to eating!')
   $('form').trigger('reset')
   store.user = responseData.user
   $('.showBody').removeClass('hidden')
@@ -32,44 +29,39 @@ const onSignInSuccess = responseData => {
 }
 
 const onSignInFailure = responseData => {
-  $('#message').text('Sign in failed')
-  $('#message').removeClass('success')
-  $('#message').addClass('failure')
+  $('#nosignin').text('sign in failed')
   $('form').trigger('reset')
+  setTimeout(() => $('#nosignin').text(''), 5000)
 }
 
 const onUpdatePasswordSuccess = () => {
-  $('#message').text('Password changed successfully!')
-  $('#message').removeClass()
-  $('#message').addClass('success')
+  $('#passwordmessage').text('password changed successfully!')
   $('form').trigger('reset')
+  setTimeout(() => $('#passwordmessage').text(''), 5000)
 }
 
 const onUpdatePasswordFailure = () => {
-  $('#message').text('Update password failed :(')
-  $('#message').removeClass()
-  $('#message').addClass('failure')
+  $('#passwordmessage').text('failed to update password')
   $('form').trigger('reset')
+  setTimeout(() => $('#passwordmessage').text(''), 5000)
 }
 
 const onSignOutSuccess = () => {
-  $('#message').text('Signed out successfully!')
-  $('#message').removeClass()
-  $('#message').addClass('success')
+  $('#goodbyemessage').text('sign out successfully! happy eating!')
   $('form').trigger('reset')
   $('.showBody').addClass('hidden')
   $('.jumbotron').removeClass('hidden')
   $('.signup-button').show()
   $('.navbar').addClass('hidden')
-  $('.navbar').addClass('hidden')
+  $('.nav-auth').addClass('hidden')
   $('.content').empty()
+  setTimeout(() => $('#goodbyemessage').text(''), 5000)
 }
 
 const onSignOutFailure = () => {
-  $('#message').text('Sign out failed :(')
-  $('#message').removeClass()
-  $('#message').addClass('failure')
+  $('#signin-success').text('failed to sign out')
   $('form').trigger('reset')
+  setTimeout(() => $('#signin-success').text(''), 5000)
 }
 
 module.exports = {

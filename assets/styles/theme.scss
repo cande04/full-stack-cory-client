@@ -2,7 +2,7 @@
 
 main {
   @include make-container;
-  @include make-container-max-widths;
+  // @include make-container-max-widths;
 
   section {
     @include make-col-ready;
@@ -12,7 +12,6 @@ main {
     @include media-breakpoint-up(lg) {
       @include make-col(4);
     }
-    background: white;
     border: 1px solid;
     margin: -1px;
     outline: none;
@@ -21,9 +20,15 @@ main {
   }
 }
 
+
+
+
+
+
+
 nav {
   @extend .navbar;
-  @extend .fixed-top;
+  // @extend .fixed-top;
   background-color: black;
 }
 
@@ -45,8 +50,8 @@ nav {
   // }
 }
 
-.showThatRestaurant {
-  @include make-row;
-  padding: 16px;
-  text-align: center;
-}
+// .showThatRestaurant {
+//   @include make-row;
+//   padding: 16px;
+//   text-align: center;
+// }

@@ -47,6 +47,8 @@ const onDelete = (event) => {
   console.log(store.deleteId)
   const id = store.deleteId
   $('.delete-modal').toggle()
+  $('#message').text('deleted!')
+  setTimeout(() => $('#message').text(''), 4000)
   api.deleteRestaurant(id)
     .then(res => {
       onIndex(event)
@@ -109,6 +111,8 @@ const onUpdate = (event) => {
   event.preventDefault()
   const id = $(event.target).closest('section').data('id')
   console.log(id)
+  $('#message').text('updated!')
+  setTimeout(() => $('#message').text(''), 4000)
   const form = event.target
   const formData = getFormFields(form)
   api.updateRestaurant(id, formData)
@@ -143,6 +147,8 @@ const onClickAddDish = (event) => {
 const onCreateFood = (event) => {
   event.preventDefault()
 
+  $('#message').text('added!')
+  setTimeout(() => $('#message').text(''), 4000)
   // const restId = $(event.target).closest('section').data('id')
   const form = event.target
   const formData = getFormFields(form)
@@ -185,6 +191,8 @@ const onUpdateFood = event => {
   event.preventDefault()
   const id = $(event.target).closest('div').data('food-id')
   console.log(id)
+  $('#message').text('updated successfully!')
+  setTimeout(() => $('#message').text(''), 3000)
   const form = event.target
   const formData = getFormFields(form)
   api.updateFood(id, formData)
@@ -205,6 +213,8 @@ const onDeleteFood = event => {
   console.log('ive been clicked')
   const id = store.deleteFoodId
   console.log(id)
+  $('#message').text('deleted!')
+  setTimeout(() => $('#message').text(''), 4000)
   $('.deleteFood-modal').toggle()
   api.deleteFood(id)
     .then(res => {

@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>more food for thought</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link href="https://fonts.googleapis.com/css?family=Handlee|Petit+Formal+Script|Shadows+Into+Light&display=swap" rel="stylesheet">
 
       <!-- Do not add `link` tags-->
       <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
@@ -17,22 +18,22 @@
     <div class="pos-f-t sticky-top">
       <div class="collapse" id="navbarToggleAuthContent">
         <div class="bg-dark p-4">
-          <form id='update-password'>
-            <input type="password" name="passwords[old]" placeholder="Enter old password">
-            <input type="password" name="passwords[new]" placeholder="Enter new password">
-            <input type="submit" class="btn btn-outline-light" value="Change Password">
+          <form class="navbar-form" id='update-password'>
+            <input type="password" name="passwords[old]" placeholder="enter old password">
+            <input type="password" name="passwords[new]" placeholder="enter new password">
+            <input type="submit" class="btn btn-outline-light" value="change password">
           </form>
           <form id='sign-out'>
-            <input type="submit" class="btn btn-outline-light" value="Sign Out">
+            <input type="submit" class="btn btn-outline-light" data-toggle="collapse" data-target="#navbarToggleAuthContent" value="sign out">
           </form>
-          <!-- <span class="text-muted"></span> -->
+          <h4 id="passwordmessage"></h4>
         </div>
       </div>
-      <nav class="navbar navbar-dark bg-dark  hidden">
+      <nav class="navbar navbar-dark nav-auth bg-dark hidden">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleAuthContent" aria-controls="navbarToggleAuthContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <h2 id="signin-success"></h2>
+        <h4 id="signin-success"></h4>
       </nav>
     </div>
 
@@ -64,26 +65,35 @@
 
 
 
-    <div class="pos-f-t restaurant-navbar fixed-bottom">
-      <nav class="navbar navbar-dark bg-dark  hidden">
+    <div class="pos-f-t fixed-bottom" id="restaurant-navbar">
+      <nav class="navbar navbar-dark bg-dark hidden">
         <!-- <button class="navbar-toggler" id='restaurants-index' type="button"  data-target="#content" aria-controls="content" aria-label="Toggle navigation">
           <a href="#restaurant-list">See Your Restaurants</a>
         </button> -->
-        <button class="navbar-toggler" id='restaurants-index' type="button">See Your Restaurants</button>
+        <button class="navbar-toggler" id='restaurants-index' type="button">see your restaurants</button>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#showRestaurant" aria-controls="showRestaurant" aria-expanded="false" aria-label="Toggle navigation">
-          <span>Search for a restaurant</span>
+          <span>search for a restaurant</span>
         </button>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#addRestaurant" aria-controls="sRestaurant" aria-expanded="false" aria-label="Toggle navigation">
-          <span>Search for a restaurant</span>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#addRestaurant" aria-controls="addRestaurant" aria-expanded="false" aria-label="Toggle navigation">
+          <span>add a restaurant</span>
         </button>
-        <h2 id="signin-success"></h2>
       </nav>
 
       <div class="collapse" id="showRestaurant">
         <div class="bg-dark p-4">
           <form id='restaurant-show'>
-            <input type="text" name="restaurant[id]" placeholder="Restaurant ID">
-            <input type="submit" class="btn btn-outline-light" value="Find a Restaurant">
+            <input type="text" name="restaurant[id]" placeholder="restaurant id">
+            <input type="submit" class="btn btn-outline-light" data-toggle="collapse" data-target="#showRestaurant" value="find a restaurant">
+          </form>
+        </div>
+      </div>
+
+      <div class="collapse" id="addRestaurant">
+        <div class="bg-dark p-4">
+          <form id='restaurant-create'>
+            <input type="text" name="restaurant[name]" placeholder="restaurant Name">
+            <input type="text" name="restaurant[city]" placeholder="city">
+            <input type="submit" class="btn btn-outline-light" data-toggle="collapse" data-target="#addRestaurant" value="add a restaurant">
           </form>
         </div>
       </div>
@@ -99,25 +109,25 @@
               <div class="modal-content">
                 <!-- header -->
                 <div class="modal-header">
-                  <h3 class="modal-title">Sign In</h3>
+                  <h3 class="modal-title">sign In</h3>
                   <button type="button" class="close justify-content-end" data-dismiss="modal">&times;</button>
                 </div>
                 <!-- body -->
                 <div class="modal-header">
                   <form role="form" id="signin">
                     <div class="form-group">
-                      <input type="email" name="credentials[email]" class="form-control" placeholder="Email"/>
-                      <input type="password" name="credentials[password]" class="form-control" placeholder="Password" />
+                      <input type="email" name="credentials[email]" class="form-control" placeholder="email"/>
+                      <input type="password" name="credentials[password]" class="form-control" placeholder="password" />
                       <input type="submit" value="Sign In" id="signin-submit" class="btn btn-outline-dark waves-effect ml-auto">
                     </div>
                   </form>
+                  <h4 id="nosignin"></h4>
                 </div>
                 <!-- footer -->
 
               </div>
             </div>
           </div>
-
         </div>
 
         <div class="modal fade" id="SignUpWindow">
@@ -125,19 +135,20 @@
             <div class="modal-content">
               <!-- header -->
               <div class="modal-header">
-                <h3 class="modal-title">Sign Up</h3>
+                <h3 class="modal-title">sign Up</h3>
                 <button type="button" class="close justify-content-end" data-dismiss="modal">&times;</button>
               </div>
               <!-- body -->
               <div class="modal-header">
                 <form role="form" id="signup">
                   <div class="form-group">
-                    <input type="email" name="credentials[email]" class="form-control" placeholder="Email"/>
-                    <input type="password" name="credentials[password]" class="form-control" placeholder="Password" />
-                    <input type="password" name="credentials[password_confirmation]" class="form-control" placeholder="Confirm Password" />
+                    <input type="email" name="credentials[email]" class="form-control" placeholder="email"/>
+                    <input type="password" name="credentials[password]" class="form-control" placeholder="password" />
+                    <input type="password" name="credentials[password_confirmation]" class="form-control" placeholder="confirm password" />
                     <input type="submit" value="Sign Up" id="signup-submit" class="btn btn-outline-dark waves-effect ml-auto">
                   </div>
                 </form>
+                <h4 id="nosignup"></h4>
               </div>
               <!-- footer -->
 
@@ -148,16 +159,17 @@
 
                 <div class="jumbotron text-center">
                   <div class="jumbtron-messaging">
-                  <h1 class="display-4">Always Hungry</h1>
-                  <p class="lead">An app for tracking your favorite restaurants and eats</p>
+                  <h1 class="display-4">more food for thought</h1>
+                  <p class="lead">an app for tracking your favorite restaurants and eats</p>
                   <hr class="my-4">
                   <p id="sign-in-message"></p>
                   <p class="lead">
                     <div class="text-center">
-                      <button class="btn btn-outline-dark btn-lg waves-effect ml-auto signup-button" data-toggle="modal" data-target="#SignUpWindow">Sign up to get started!</button>
-                      <button class="btn btn-outline-dark btn-lg waves-effect ml-auto signin-button" data-toggle="modal" data-target="#SignInWindow">Sign In</button>
+                      <button class="btn btn-outline-dark btn-lg waves-effect ml-auto signup-button" data-toggle="modal" data-target="#SignUpWindow">sign up to get started!</button>
+                      <button class="btn btn-outline-dark btn-lg waves-effect ml-auto signin-button" data-toggle="modal" data-target="#SignInWindow">sign In</button>
                     </div>
                   </p>
+                    <p class="lead" id="goodbyemessage"></p>
                 </div>
                 </div>
 
@@ -166,11 +178,15 @@
 
     <div class="showBody hidden">
       <header>
-        <h1 class="title">Always Hungry</h1>
+        <div class="title">
+          <h1 class="title-text">more food for thought</h1>
+        </div>
       </header>
 
+    <main>
+    <div class="message">
     <h2 id="message"></h2>
-
+    </div>
     <div>
       <!-- <h2>Get All</h2>
     <form id='restaurants-index'>
@@ -183,14 +199,14 @@
       <input type="submit" value="Get a Restaurant">
     </form> -->
 
-    <h2>Add a Restaurant</h2>
+    <!-- <h2>Add a Restaurant</h2>
     <form id='restaurant-create'>
       <input type="text" name="restaurant[name]" placeholder="Where did you eat?">
       <input type="text" name="restaurant[city]" placeholder="What city?">
       <input type="submit" value="Add a Restaurant">
-    </form>
+    </form> -->
 
-    <main>
+
       <a name="restaurant-list"></a>
       <div class="content" id="content"></div>
     </main>
@@ -240,12 +256,6 @@
 
 
 </div>
-
-
-
-
-
-
 
 
 
