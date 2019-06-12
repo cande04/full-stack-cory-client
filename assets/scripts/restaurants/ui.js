@@ -75,6 +75,8 @@ const onDeleteFailure = responseData => {
 const onCreateSuccess = responseData => {
   $('#content').html(showRestaurantTemplate({restaurant: responseData.restaurant}))
   $('form').trigger('reset')
+  $('#message').text('created successfully!')
+  setTimeout(() => $('#message').text(''), 4000)
   $('html,body').animate({
     scrollTop: $('.message').offset().top},
   'slow')
