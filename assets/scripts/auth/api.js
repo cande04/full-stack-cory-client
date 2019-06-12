@@ -20,8 +20,6 @@ const signIn = (formData) => {
 }
 
 const updatePassword = (formData) => {
-  console.log('from update password api')
-  console.log('store is', store)
 
   return $.ajax({
     url: config.apiUrl + '/change-password',

@@ -23,6 +23,7 @@ header {
 }
 
 
+
 .title {
   color: black;
   margin: 0 auto;
@@ -45,6 +46,14 @@ header {
   display: none;
 }
 
+button {
+  font-family: 'Handlee', sans-serif;
+}
+
+.btn {
+  font-family: 'Handlee', sans-serif;
+}
+
 .inline {
   display: inline;
 }
@@ -60,6 +69,7 @@ header {
 
 .jumbotron {
   height: 100vh;
+  font-family: 'Handlee', sans-serif;
 }
 
 .jumbtron-messaging {
@@ -86,6 +96,14 @@ header {
 }
 
 .restaurant-data {
+  font-family: 'Handlee', sans-serif;
+}
+
+.modal {
+  font-family: 'Handlee', sans-serif;
+}
+
+form {
   font-family: 'Handlee', sans-serif;
 }
 

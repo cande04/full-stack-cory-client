@@ -57,7 +57,6 @@ const create = formData => {
 }
 
 const updateRestaurant = (id, formData) => {
-  console.log(id, formData)
   return $.ajax({
     url: config.apiUrl + '/restaurants/' + id,
     method: 'PATCH',
@@ -69,7 +68,6 @@ const updateRestaurant = (id, formData) => {
 }
 
 const createFood = (formData) => {
-  console.log(formData)
   return $.ajax({
     url: config.apiUrl + `/foods`,
     method: 'POST',
@@ -81,7 +79,6 @@ const createFood = (formData) => {
 }
 
 const updateFood = (id, formData) => {
-  console.log(id, formData)
   return $.ajax({
     url: config.apiUrl + '/foods/' + id,
     method: 'PATCH',

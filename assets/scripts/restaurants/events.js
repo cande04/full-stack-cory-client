@@ -40,11 +40,9 @@ const onClickDelete = event => {
   const id = $(event.target).data('id')
   $('.delete-modal').toggle()
   store.deleteId = id
-  console.log(store.deleteId)
 }
 
 const onDelete = (event) => {
-  console.log(store.deleteId)
   const id = store.deleteId
   $('.delete-modal').toggle()
   $('#message').text('deleted!')
@@ -96,13 +94,10 @@ const onClickUpdate = event => {
       container.addClass('hidden')
     }
   })
-  console.log(store.restaurantId)
   const name = $(event.target).closest('section').data('name')
   store.restaurantName = name
-  console.log(store.restaurantName)
   const city = $(event.target).closest('section').data('city')
   store.restaurantCity = city
-  console.log(store.restaurantCity)
   // $(`[data-id=${store.restaurantId}] > .update-restaurant-form`).toggle()
   ui.fillUpdateForm()
 }
@@ -110,7 +105,6 @@ const onClickUpdate = event => {
 const onUpdate = (event) => {
   event.preventDefault()
   const id = $(event.target).closest('section').data('id')
-  console.log(id)
   $('#message').text('updated!')
   setTimeout(() => $('#message').text(''), 4000)
   const form = event.target
@@ -164,10 +158,8 @@ const onClickUpdateFood = event => {
   event.preventDefault()
   const id = $(event.target).closest('section').data('id')
   store.restaurantId = id
-  console.log(store.restaurantId)
   const foodId = $(event.target).closest('div').data('food-id')
   store.foodId = foodId
-  console.log(store.foodId)
   $(`#food-${foodId}`).toggleClass('hidden')
 
   $(document).mouseup(function (e) {
@@ -179,10 +171,8 @@ const onClickUpdateFood = event => {
 
   const name = $(event.target).closest('div').data('food-name')
   store.foodName = name
-  console.log(store.foodName)
   const notes = $(event.target).closest('div').data('food-notes')
   store.foodNotes = notes
-  console.log(store.foodNotes)
   // $(`[data-id=${store.restaurantId}] > .update-restaurant-form`).toggle()
   ui.fillUpdateFood()
 }
@@ -190,7 +180,6 @@ const onClickUpdateFood = event => {
 const onUpdateFood = event => {
   event.preventDefault()
   const id = $(event.target).closest('div').data('food-id')
-  console.log(id)
   $('#message').text('updated successfully!')
   setTimeout(() => $('#message').text(''), 3000)
   const form = event.target
@@ -206,13 +195,10 @@ const onClickDeleteFood = event => {
   const id = $(event.target).closest('div').data('food-id')
   $('.deleteFood-modal').toggle()
   store.deleteFoodId = id
-  console.log(store.deleteFoodId)
 }
 
 const onDeleteFood = event => {
-  console.log('ive been clicked')
   const id = store.deleteFoodId
-  console.log(id)
   $('#message').text('deleted!')
   setTimeout(() => $('#message').text(''), 4000)
   $('.deleteFood-modal').toggle()
