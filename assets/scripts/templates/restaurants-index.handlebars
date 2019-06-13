@@ -45,7 +45,7 @@
 
     <form class="update-restaurant-form card hidden" id="restaurant-{{restaurant.id}}">
         <input class="restaurant-rename" required type="text" name="restaurant[name]" placeholder="new restaurant name"/>
-        <input class="city-rename" required type="text" name="restaurant[city]" placeholder="new restaurant city"/>
+        <input class="city-rename" type="text" name="restaurant[city]" placeholder="new restaurant city"/>
         <input type="submit" value="edit" class="btn btn-sm btn-outline-dark margin-top-5 bare-button">
     </form>
 
@@ -72,7 +72,7 @@
 
   <form class="update-dish-form card hidden" id="food-{{food.id}}">
       <input class="food-rename" required type="text" name="food[name]" placeholder="new food name"/>
-      <input class="notes-edit" required type="text" name="food[notes]" placeholder="new food notes"/>
+      <input class="notes-edit" type="text" name="food[notes]" placeholder="new food notes"/>
       <input class="rest-id" type="integer" name="food[restaurant_id]" value="{{restaurant.id}}" readonly/>
       <input type="submit" value="submit" class="btn btn-sm btn-outline-dark margin-top-5 bare-button">
   </form>

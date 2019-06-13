@@ -70,6 +70,9 @@ const onShowFailure = responseData => {
 const onDeleteFailure = responseData => {
   $('#message').text('failed to delete')
   setTimeout(() => $('#message').text(''), 4000)
+  $('html,body').animate({
+    scrollTop: $('main').offset().top},
+  'slow')
 }
 
 const onCreateSuccess = responseData => {
@@ -86,10 +89,23 @@ const onCreateFailure = responseData => {
   $('#content').text('failed to create')
   $('form').trigger('reset')
   setTimeout(() => $('#content').text(''), 4000)
+  $('html,body').animate({
+    scrollTop: $('main').offset().top},
+  'slow')
 }
 
 const onUpdateSuccess = responseData => {
 }
+
+const onUpdateFailure = responseData => {
+  $('#message').text('failed to update')
+  setTimeout(() => $('#message').text(''), 4000)
+  $('form').trigger('reset')
+  $('html,body').animate({
+    scrollTop: $('main').offset().top},
+  'slow')
+}
+
 
 const fillUpdateForm = event => {
   // const restId = $(event.target).closest('section').data('id')
@@ -106,7 +122,11 @@ const onCreateFoodSuccess = responseData => {
 
 const onCreateFoodFailure = responseData => {
   $('#message').text('Failed to create')
+  $('form').trigger('reset')
   setTimeout(() => $('#message').text(''), 4000)
+  $('html,body').animate({
+    scrollTop: $('main').offset().top},
+  'slow')
 }
 
 const fillUpdateFood = event => {
@@ -127,6 +147,10 @@ const onUpdateFoodSuccess = responseData => {
 const onUpdateFoodFailure = responseData => {
   $('#message').text('failed to update')
   setTimeout(() => $('#message').text(''), 4000)
+  $('form').trigger('reset')
+  $('html,body').animate({
+    scrollTop: $('main').offset().top},
+  'slow')
 }
 
 const onDeleteFoodFailure = responseData => {
@@ -150,5 +174,6 @@ module.exports = {
   onUpdateFoodSuccess,
   onUpdateFoodFailure,
   fillUpdateFood,
-  onDeleteFoodFailure
+  onDeleteFoodFailure,
+  onUpdateFailure
 }
