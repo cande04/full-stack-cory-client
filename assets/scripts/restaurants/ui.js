@@ -16,32 +16,6 @@ const indexRestaurantsSuccess = (data) => {
   'slow')
 }
 
-const onShowSuccess = (responseData) => {
-  // const restaurantId = responseData.restaurant.id
-  // if (restaurantId =
-
-  $('#content').html(showRestaurantTemplate({restaurant: responseData.restaurant}))
-  $('form').trigger('reset')
-  $('html,body').animate({
-    scrollTop: $('.message').offset().top},
-  'slow')
-  // if (restaurantId === indexRestaurantsTemplate({restaurants: responseData.restaurant.data('id')})) {
-  //   $('content').html(restaurant)
-  // }
-}
-
-// const onIndexSuccess = responseData => {
-//   console.log('success', responseData)
-//   $('#message').html('')
-//   const restaurants = responseData.restaurants
-//   restaurants.forEach(restaurant => {
-//     $('#message').append(`<p>${restaurant.id}: ${restaurant.name}, ${restaurant.city}</p>`)
-//   })
-//
-//   $('#message').removeClass()
-//   $('#message').addClass('success')
-// }
-
 const onIndexFailure = responseData => {
   $('#content').text('failed to load restaurants')
   $('html,body').animate({
@@ -49,14 +23,6 @@ const onIndexFailure = responseData => {
   'slow')
   setTimeout(() => $('#content').text(''), 4000)
 }
-
-// const onShowSuccess = responseData => {
-//   console.log('success', responseData)
-//   const restaurant = responseData.restaurant.name
-//   $('#message').text(restaurant + `food: ${responseData.restaurant.foods[0].name}`)
-//   $('#message').removeClass()
-//   $('#message').addClass('success')
-// }
 
 const onShowFailure = responseData => {
   $('#content').text('restaurant doesn\'t exist - better go try it!')
@@ -105,7 +71,6 @@ const onUpdateFailure = responseData => {
     scrollTop: $('main').offset().top},
   'slow')
 }
-
 
 const fillUpdateForm = event => {
   // const restId = $(event.target).closest('section').data('id')
@@ -159,10 +124,8 @@ const onDeleteFoodFailure = responseData => {
 }
 
 module.exports = {
-  // onIndexSuccess,
   indexRestaurantsSuccess,
   onIndexFailure,
-  onShowSuccess,
   onShowFailure,
   onDeleteFailure,
   onCreateSuccess,

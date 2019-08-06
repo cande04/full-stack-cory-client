@@ -15,9 +15,6 @@
         no city provided.
       {{/if}}
     </p>
-    <p>
-      restaurant id: {{restaurant.id}}
-    </p>
 
 
 
@@ -55,7 +52,6 @@
     <form class="create-food-form card hidden" id="restaurantfood-{{restaurant.id}}">
         <input class="food-name" type="text" name="food[name]" placeholder="new dish"/>
         <input class="notes" type="text" name="food[notes]" placeholder="what'd you think?"/>
-        <input class="rest-id" type="integer" name="food[restaurant_id]" value="{{restaurant.id}}" readonly/>
         <input type="submit" value="create" class="btn btn-sm btn-outline-dark margin-top-5 bare-button">
     </form>
 
@@ -73,7 +69,6 @@
   <form class="update-dish-form card hidden" id="food-{{food.id}}">
       <input class="food-rename" required type="text" name="food[name]" placeholder="new food name"/>
       <input class="notes-edit" type="text" name="food[notes]" placeholder="new food notes"/>
-      <input class="rest-id" type="integer" name="food[restaurant_id]" value="{{restaurant.id}}" readonly/>
       <input type="submit" value="submit" class="btn btn-sm btn-outline-dark margin-top-5 bare-button">
   </form>
   <button class='btn btn-sm btn-outline-dark delete-food'>delete</button>

@@ -4,6 +4,7 @@ const getFormFields = require('../../../lib/get-form-fields')
 const api = require('./api')
 const ui = require('./ui')
 const store = require('../store')
+const indexRestaurantsTemplate = require('../templates/restaurants-index.handlebars')
 
 const onIndex = (event) => {
   event.preventDefault()
@@ -18,11 +19,40 @@ const onShow = (event) => {
 
   const form = event.target
   const formData = getFormFields(form)
-  const restId = formData.restaurant.id
+  const name = formData.restaurant.name.toString().toLowerCase()
+  console.log(name)
 
-  api.show(restId)
-    .then(ui.onShowSuccess)
+  api.index()
+    .then((responseData) => {
+      console.log(responseData)
+      console.log(name)
+      const searchedRestaurants = []
+      for (let i = 0; i < responseData.restaurants.length; i++) {
+        console.log(responseData.restaurants[i].name)
+        if (responseData.restaurants[i].name.toString().toLowerCase().includes(name)) {
+          searchedRestaurants.push(responseData.restaurants[i])
+        }
+      }
+      console.log(searchedRestaurants)
+      if (searchedRestaurants.length !== 0) {
+        $('#content').html(indexRestaurantsTemplate({ restaurants: searchedRestaurants }))
+      } else {
+        $('#content').text('restaurant doesn\'t exist - better go try it!')
+      }
+      $('form').trigger('reset')
+      $('html,body').animate({
+        scrollTop: $('.message').offset().top},
+      'slow')
+    })
     .catch(ui.onShowFailure)
+}
+
+const onSearch = event => {
+  event.preventDefault()
+
+  const formData = getFormFields(event.target)
+  console.log(formData)
+  // const name =
 }
 
 // const onShow = (event) => {
@@ -225,6 +255,7 @@ module.exports = {
   onClickDelete,
   onClickDeleteFood,
   hideFoodModal,
-  hideRestaurantModal
+  hideRestaurantModal,
+  onSearch
   // showForms
 }
