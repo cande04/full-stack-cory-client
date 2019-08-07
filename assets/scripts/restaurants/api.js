@@ -67,22 +67,34 @@ const updateRestaurant = (id, formData) => {
   })
 }
 
-const createFood = (formData) => {
+const createFood = (formData, restId) => {
   return $.ajax({
     url: config.apiUrl + `/foods`,
     method: 'POST',
-    data: formData,
+    data: {
+      food: {
+        name: formData.food.name,
+        notes: formData.food.notes,
+        restaurant_id: restId
+      }
+    },
     headers: {
       Authorization: 'Token token=' + store.user.token
     }
   })
 }
 
-const updateFood = (id, formData) => {
+const updateFood = (id, formData, restId) => {
   return $.ajax({
     url: config.apiUrl + '/foods/' + id,
     method: 'PATCH',
-    data: formData,
+    data: {
+      food: {
+        name: formData.food.name,
+        notes: formData.food.notes,
+        restaurant_id: restId
+      }
+    },
     headers: {
       Authorization: 'Token token=' + store.user.token
     }

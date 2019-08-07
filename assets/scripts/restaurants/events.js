@@ -173,11 +173,12 @@ const onCreateFood = (event) => {
 
   $('#message').text('added!')
   setTimeout(() => $('#message').text(''), 4000)
-  // const restId = $(event.target).closest('section').data('id')
+  const restId = $(event.target).closest('section').data('id')
   const form = event.target
   const formData = getFormFields(form)
+  console.log(formData, restId)
 
-  api.createFood(formData)
+  api.createFood(formData, restId)
     .then(res => {
       onIndex(event)
     })
@@ -210,11 +211,12 @@ const onClickUpdateFood = event => {
 const onUpdateFood = event => {
   event.preventDefault()
   const id = $(event.target).closest('div').data('food-id')
+  const restId = $(event.target).closest('section').data('id')
   $('#message').text('updated successfully!')
   setTimeout(() => $('#message').text(''), 3000)
   const form = event.target
   const formData = getFormFields(form)
-  api.updateFood(id, formData)
+  api.updateFood(id, formData, restId)
     .then(res => {
       onIndex(event)
     })
