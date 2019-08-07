@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>more food for thought</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link href="https://fonts.googleapis.com/css?family=Handlee|Petit+Formal+Script|Shadows+Into+Light&display=swap" rel="stylesheet">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body>
+    <!--Navbar -->
+
+    <div class="pos-f-t sticky-top">
+      <div class="collapse" id="navbarToggleAuthContent">
+        <div class="bg-dark p-4">
+          <form class="navbar-form form-group" id='update-password'>
+            <input type="password" name="passwords[old]" placeholder="enter old password">
+            <input type="password" name="passwords[new]" placeholder="enter new password">
+            <input type="submit" class="btn btn-outline-light" value="change password">
+          </form>
+          <form id='sign-out'>
+            <input type="submit" class="btn btn-outline-light" data-toggle="collapse" data-target="#navbarToggleAuthContent" value="sign out">
+          </form>
+          <h4 id="passwordmessage"></h4>
+        </div>
+      </div>
+      <nav class="navbar navbar-dark nav-auth bg-dark hidden">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleAuthContent" aria-controls="navbarToggleAuthContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <h4 id="signin-success"></h4>
+      </nav>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="pos-f-t fixed-bottom" id="restaurant-navbar">
+      <nav class="navbar navbar-dark bg-dark hidden">
+        <!-- <button class="navbar-toggler" id='restaurants-index' type="button"  data-target="#content" aria-controls="content" aria-label="Toggle navigation">
+          <a href="#restaurant-list">See Your Restaurants</a>
+        </button> -->
+        <button class="navbar-toggler" id='restaurants-index' type="button">see your restaurants</button>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#showRestaurant" aria-controls="showRestaurant" aria-expanded="false" aria-label="Toggle navigation">
+          <span>search for a restaurant</span>
+        </button>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#addRestaurant" aria-controls="addRestaurant" aria-expanded="false" aria-label="Toggle navigation">
+          <span>add a restaurant</span>
+        </button>
+      </nav>
+
+      <div class="collapse" id="showRestaurant">
+        <div class="bg-dark p-4">
+          <form class="form-group" id='restaurant-show'>
+            <input type="text" name="restaurant[name]" placeholder="restaurant name">
+            <input type="submit" class="btn btn-outline-light" data-toggle="collapse" data-target="#showRestaurant" value="find a restaurant">
+          </form>
+        </div>
+      </div>
+
+      <div class="collapse" id="addRestaurant">
+        <div class="bg-dark p-4">
+          <form class="form-group" id='restaurant-create'>
+            <input type="text" name="restaurant[name]" placeholder="restaurant name">
+            <input type="text" name="restaurant[city]" placeholder="city">
+            <input type="submit" class="btn btn-outline-light" data-toggle="collapse" data-target="#addRestaurant" value="add a restaurant">
+          </form>
+        </div>
+      </div>
+
+
+    </div>
+
+
+        <div class="container">
+
+          <div class="modal fade" id="SignInWindow">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <!-- header -->
+                <div class="modal-header">
+                  <h3 class="modal-title">sign in</h3>
+                  <button type="button" class="close justify-content-end" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- body -->
+                <div class="modal-header">
+                  <form role="form" id="signin">
+                    <div class="form-group">
+                      <input type="email" name="credentials[email]" class="form-control" placeholder="email"/>
+                      <input type="password" name="credentials[password]" class="form-control" placeholder="password" />
+                      <input type="submit" value="Sign In" id="signin-submit" class="btn btn-outline-dark waves-effect ml-auto">
+                    </div>
+                  </form>
+                  <h4 id="nosignin"></h4>
+                </div>
+                <!-- footer -->
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="SignUpWindow">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <!-- header -->
+              <div class="modal-header">
+                <h3 class="modal-title">sign up</h3>
+                <button type="button" class="close justify-content-end" data-dismiss="modal">&times;</button>
+              </div>
+              <!-- body -->
+              <div class="modal-header">
+                <form role="form" id="signup">
+                  <div class="form-group">
+                    <input type="email" name="credentials[email]" class="form-control" placeholder="email"/>
+                    <input type="password" name="credentials[password]" class="form-control" placeholder="password" />
+                    <input type="password" name="credentials[password_confirmation]" class="form-control" placeholder="confirm password" />
+                    <input type="submit" value="Sign Up" id="signup-submit" class="btn btn-outline-dark waves-effect ml-auto">
+                  </div>
+                </form>
+                <h4 id="nosignup"></h4>
+              </div>
+              <!-- footer -->
+
+
+            </div>
+          </div>
+        </div>
+
+                <div class="jumbotron text-center">
+                  <div class="jumbtron-messaging">
+                  <h1 class="display-4">more food for thought</h1>
+                  <p class="lead">an app for tracking your favorite restaurants and eats</p>
+                  <hr class="my-4">
+                  <p id="sign-in-message"></p>
+                  <p class="lead">
+                    <div class="text-center">
+                      <button class="btn btn-outline-dark btn-lg waves-effect ml-auto signup-button" data-toggle="modal" data-target="#SignUpWindow">sign up to get started!</button>
+                      <button class="btn btn-outline-dark btn-lg waves-effect ml-auto signin-button" data-toggle="modal" data-target="#SignInWindow">sign In</button>
+                    </div>
+                  </p>
+                    <p class="lead" id="goodbyemessage"></p>
+                </div>
+                </div>
+
+
+
+
+    <div class="showBody hidden">
+      <header>
+        <div class="title">
+          <h1 class="title-text">more food for thought</h1>
+        </div>
+      </header>
+
+    <main>
+    <div class="message">
+    <h2 id="message"></h2>
+    </div>
+    <div>
+      <!-- <h2>Get All</h2>
+    <form id='restaurants-index'>
+      <input type="submit" value="Get all">
+    </form> -->
+
+    <!-- <h2>Get a Restaurant</h2>
+    <form id='restaurant-show'>
+      <input type="text" name="restaurant[id]" placeholder="Restaurant ID">
+      <input type="submit" value="Get a Restaurant">
+    </form> -->
+
+    <!-- <h2>Add a Restaurant</h2>
+    <form id='restaurant-create'>
+      <input type="text" name="restaurant[name]" placeholder="Where did you eat?">
+      <input type="text" name="restaurant[city]" placeholder="What city?">
+      <input type="submit" value="Add a Restaurant">
+    </form> -->
+
+
+      <a name="restaurant-list"></a>
+      <div class="content" id="content"></div>
+    </main>
+</div>
+
+
+    <div class="modal in delete-modal" style="display: hidden;">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+          </div>
+            <h4 class="modal-title">Are you sure?</h4>
+          <div class="modal-body">
+            <p>Are you sure you want to delete?</p>
+            <div class="row">
+                <div class="col-12-xs text-center">
+                    <button class="btn btn-outline-dark btn-md yes-delete">Yes</button>
+                    <button class="btn btn-outline-dark btn-md no-delete " data-dismiss="modal">No</button>
+                </div>
+            </div>
+          </div>
+
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <div class="modal in deleteFood-modal" style="display: hidden;">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Are you sure?</h4>
+          </div>
+          <div class="modal-body">
+            <p>Are you sure you want to delete this dish?</p>
+            <div class="row">
+                <div class="col-12-xs text-center">
+                    <button class="btn btn-outline-dark btn-md yesDelete-food">Yes</button>
+                    <button class="btn btn-outline-dark btn-md noDelete-food" data-dismis="modal">No</button>
+                </div>
+            </div>
+          </div>
+
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
+</div>
+
+
+
+
+
+    </body>
+</html>
